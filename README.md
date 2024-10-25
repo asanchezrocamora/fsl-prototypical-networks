@@ -1,14 +1,14 @@
 # Prototypical Networks for Few-shot in TensorFlow 2.0
-Implementation of Prototypical Networks for Few-shot Learning paper (https://arxiv.org/abs/1703.05175) in TensorFlow 2.0. Model has been tested on Omniglot and miniImagenet datasets with the same splitting as in the paper.
+Implementation of Prototypical Networks for Few-shot Learning paper (https://arxiv.org/abs/1703.05175) in TensorFlow 2.14. Model has been tested on Omniglot and miniImagenet datasets with the same splitting as in the paper. Also, adapted to use as encoder, as a backbone, the EfficientNet V2 variant b0.
 
 <img width="896" alt="Screenshot 2019-04-02 at 9 53 06 AM" src="https://user-images.githubusercontent.com/23639048/55438102-5d9e4c00-55a9-11e9-86e2-b4f79f880b83.png">
 
 ### Dependencies and Installation
-* The code has been tested on Ubuntu 18.04 with Python 3.6.8 and TensorFflow 2.0.0-alpha0
-* The two main dependencies are TensorFlow and Pillow package (Pillow is included in dependencies)
-* To install `prototf` lib run `pytnon setup.py install`
-* Run `bash data/download_omniglot.sh` from repo's root directory to download Omniglot dataset
-* miniImagenet was downloaded from brilliant repo from `renmengye` (https://github.com/renmengye/few-shot-ssl-public) and placed into `data/mini-imagenet` folder
+* The code has been tested on Ubuntu 22.04 with Python 3.10.12 and TensorFflow 2.14.0
+* The two main dependencies are TensorFlow (2.14.0) and Pillow package (9.5.0)
+* In this version there is no need to install `prototf` lib. Just execute the code like downbelow.
+* Run `bash data/download_omniglot.sh` from repo's root directory to download Omniglot dataset. But warning, as long as EfficientNet B0 is build for 3 channel images, omniglot is not available with this arquitecture.
+* miniImagenet was downloaded from brilliant repo from `renmengye` (https://github.com/renmengye/few-shot-ssl-public) and placed into `data/mini-imagenet/data` folder. 
 
 ### Repository Structure
 
@@ -29,20 +29,3 @@ The repository organized as follows. `data` directory contains scripts for datas
 
 * Run `python -m unittest tests/test_omniglot.py` from repo's root to test Omniglot
 * Run `python -m unittest tests/test_mini_imagenet.py` from repo's root test miniImagenet 
-
-### Results
-
-Omniglot:
-
-| Evnironment                 | 5-way-5-shot     | 5-way-1-shot     | 20-way-5-shot    | 20-way-1shot     |
-|-----------------------------|------------------|------------------|------------------|------------------|
-| Accuracy                    | 99.4%            | 97.4%            | 98.4%            | 92.2%            |
-
-miniImagenet
-
-| Evnironment                 | 5-way-5-shot     | 5-way-1-shot     | 
-|-----------------------------|------------------|------------------|
-| Accuracy                    | 66.0%            | 43.5%            |
-
-Additional settings can be found in `results` folder in the root of repository. 
-
