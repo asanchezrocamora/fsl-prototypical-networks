@@ -45,6 +45,8 @@ The repository is structured as follows:
 
 * Run `python -m unittest tests/test_mini_imagenet.py` from repo's root test miniImagenet 
 
+---
+
 ## Research Paper
 
 This repository supports the experiments conducted in our paper:  
