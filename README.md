@@ -1,48 +1,86 @@
-# Prototypical Networks for Few-shot in TensorFlow 2.0
-Implementation of Prototypical Networks for Few-shot Learning paper (https://arxiv.org/abs/1703.05175) in TensorFlow 2.0. Model has been tested on Omniglot and miniImagenet datasets with the same splitting as in the paper.
+# Prototypical Networks with EfficientNetV2-B0 Encoder for Few-Shot Learning
 
-<img width="896" alt="Screenshot 2019-04-02 at 9 53 06 AM" src="https://user-images.githubusercontent.com/23639048/55438102-5d9e4c00-55a9-11e9-86e2-b4f79f880b83.png">
+This repository implements **Prototypical Networks** for Few-Shot Learning (FSL) tasks using the **EfficientNetV2-B0** encoder. The architecture has been adapted to enhance Few-Shot Learning performance, as detailed in our paper [Few-shot Learning for Presentation Attack Detection in ID Cards](https://arxiv.org/pdf/2409.06842v1). EfficientNetV2-B0 is a state-of-the-art convolutional neural network, as described in the original [EfficientNetV2 paper](https://arxiv.org/pdf/2104.00298), known for its efficiency and accuracy.
 
-### Dependencies and Installation
-* The code has been tested on Ubuntu 18.04 with Python 3.6.8 and TensorFflow 2.0.0-alpha0
-* The two main dependencies are TensorFlow and Pillow package (Pillow is included in dependencies)
-* To install `prototf` lib run `pytnon setup.py install`
-* Run `bash data/download_omniglot.sh` from repo's root directory to download Omniglot dataset
-* miniImagenet was downloaded from brilliant repo from `renmengye` (https://github.com/renmengye/few-shot-ssl-public) and placed into `data/mini-imagenet` folder
+Our research demonstrates the applicability of this structure for detecting **Presentation Attacks on ID Cards** in remote verification systems, extending to new countries and novel attack types. By leveraging meta-learning principles and the EfficientNetV2-B0 encoder, we achieve competitive results with as few as five unique identities and under 100 images per new country. An example of prototypical network  is shows in Figure 1 ([Source Paper](https://arxiv.org/abs/1703.05175)).
 
-### Repository Structure
+![Prototypical Networks Architecture](https://user-images.githubusercontent.com/23639048/55438102-5d9e4c00-55a9-11e9-86e2-b4f79f880b83.png)
 
-The repository organized as follows. `data` directory contains scripts for dataset downloading and used as a default directory for datasets. `prototf` is the library containing the model itself (`prototf/models`) and logic for datasets loading and processing (`prototf/data`). `scripts` directory contains scripts for launching the training. `train/run_train.py` and `eval/run_eval.py` launch training and evaluation respectively. `tests` folder contains basic training procedure on small-valued parameters to check general correctness. `results` folder contains .md file with current configuration and details of conducted experiments.
+---
+
+## Dependencies and Installation
+
+1. The code has been tested on **Ubuntu 22.04** with **Python 3.10.12** and **TensorFlow 2.14.0**.
+2. Required dependencies:
+   - **TensorFlow 2.14.0**
+   - **Pillow 9.5.0**
+3. The `prototf` library is no longer required; execute the scripts as shown below.
+4. Datasets:
+   - **miniImageNet**: Downloaded from the repository of [renmengye](https://github.com/renmengye/few-shot-ssl-public) and placed in the `data/mini-imagenet/data` folder.
+
+---
+
+## Repository Structure
+
+The repository is structured as follows:
+
+- **`data/`**: Scripts for dataset downloading and storage.
+- **`prototf/`**: Contains the core model implementation in `prototf/models` and dataset processing logic in `prototf/data`.
+- **`scripts/`**: Includes scripts to train (`train/run_train.py`) and evaluate (`eval/run_eval.py`) the model.
+- **`tests/`**: Basic scripts to validate the training pipeline.
+- **`results/`**: Contains markdown files with details about experiments and configurations.
+
+---
 
 ### Training
 
 * Training and evaluation configurations are specified through config files, each config describes single train+eval evnironment.
-* Run `python scripts/train/run_train.py --config scripts/config_omniglot.conf` to run training on Omniglot with default parameters.
 * Run `python scripts/train/run_train.py --config scripts/config_miniimagenet.conf` to run training on miniImagenet with default parmeters
 
 ### Evaluating
 
-* Run `python scripts/eval/run_eval.py --config scripts/config_omniglot.conf` to run evaluation on Omniglot
 * Run `python scripts/eval/run_eval.py --config scripts/config_miniimagenet.conf` to run evaluation on miniImagenet
 
 ### Tests
 
-* Run `python -m unittest tests/test_omniglot.py` from repo's root to test Omniglot
 * Run `python -m unittest tests/test_mini_imagenet.py` from repo's root test miniImagenet 
 
-### Results
+---
 
-Omniglot:
+## Research Paper
 
-| Evnironment                 | 5-way-5-shot     | 5-way-1-shot     | 20-way-5-shot    | 20-way-1shot     |
-|-----------------------------|------------------|------------------|------------------|------------------|
-| Accuracy                    | 99.4%            | 97.4%            | 98.4%            | 92.2%            |
+This repository supports the experiments conducted in our paper:  
+**"[Few-shot Learning for Presentation Attack Detection in ID Cards](https://arxiv.org/pdf/2409.06842v1)"**
 
-miniImagenet
+Our research focuses on using Few-Shot Learning to detect **Presentation Attacks** on ID cards in remote verification systems. By employing **Prototypical Networks** with an **EfficientNetV2-B0 encoder**, we achieve robust generalization across countries like **Spain**, **Chile**, **Argentina**, and **Costa Rica**. 
 
-| Evnironment                 | 5-way-5-shot     | 5-way-1-shot     | 
-|-----------------------------|------------------|------------------|
-| Accuracy                    | 66.0%            | 43.5%            |
+Our work specifically targets the challenge of **screen display presentation attacks** and achieves the following results:
+- **Competitive performance** with as few as **five unique identities** per country.
+- **High efficacy** with under **100 images** for unseen data.
 
-Additional settings can be found in `results` folder in the root of repository. 
+This research highlights the potential of novel Few-Shot Learning architectures for **generalized Presentation Attack Detection** in scenarios with limited training data.
 
+
+### Citation
+
+If you use this repository or find it helpful, please consider citing our papers:
+
+> Sánchez, Álvaro, Espín, Juan M., Tapia, Juan E.  
+> **Few-Shot Learning: Expanding ID Cards Presentation Attack Detection to Unknown ID Countries**  
+> *2024 IEEE International Joint Conference on Biometrics (IJCB)* (2024).  
+> [DOI: 10.1109/IJCB62174.2024.10744501](https://doi.org/10.1109/IJCB62174.2024.10744501)
+
+BibTeX citation:
+
+```bibtex
+@INPROCEEDINGS{10744501,
+  author={Sanchez, Alvaro and Espín, Juan M. and Tapia, Juan E.},
+  booktitle={2024 IEEE International Joint Conference on Biometrics (IJCB)}, 
+  title={Few-Shot Learning: Expanding ID Cards Presentation Attack Detection to Unknown ID Countries}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-9},
+  keywords={Metalearning;Measurement;Biometrics;Few shot learning},
+  doi={10.1109/IJCB62174.2024.10744501}
+}
