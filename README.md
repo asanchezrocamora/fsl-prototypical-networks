@@ -2,7 +2,7 @@
 
 This repository implements **Prototypical Networks** for Few-Shot Learning (FSL) tasks using the **EfficientNetV2-B0** encoder. The architecture has been adapted to enhance Few-Shot Learning performance, as detailed in our paper [Few-shot Learning for Presentation Attack Detection in ID Cards](https://arxiv.org/pdf/2409.06842v1). EfficientNetV2-B0 is a state-of-the-art convolutional neural network, as described in the original [EfficientNetV2 paper](https://arxiv.org/pdf/2104.00298), known for its efficiency and accuracy.
 
-Our research demonstrates the applicability of this structure for detecting **Presentation Attacks on ID Cards** in remote verification systems, extending to new countries and novel attack types. By leveraging meta-learning principles and the EfficientNetV2-B0 encoder, we achieve competitive results with as few as five unique identities and under 100 images per new country.
+Our research demonstrates the applicability of this structure for detecting **Presentation Attacks on ID Cards** in remote verification systems, extending to new countries and novel attack types. By leveraging meta-learning principles and the EfficientNetV2-B0 encoder, we achieve competitive results with as few as five unique identities and under 100 images per new country. An example of prototypical network  is shows in Figure 1 ([Source Paper](https://arxiv.org/abs/1703.05175)).
 
 ![Prototypical Networks Architecture](https://user-images.githubusercontent.com/23639048/55438102-5d9e4c00-55a9-11e9-86e2-b4f79f880b83.png)
 
