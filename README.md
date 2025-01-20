@@ -41,10 +41,6 @@ The repository is structured as follows:
 
 * Run `python scripts/eval/run_eval.py --config scripts/config_miniimagenet.conf` to run evaluation on miniImagenet
 
-### Tests
-
-* Run `python -m unittest tests/test_mini_imagenet.py` from repo's root test miniImagenet 
-
 ---
 
 ## Research Paper
